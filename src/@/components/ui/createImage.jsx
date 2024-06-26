@@ -42,10 +42,10 @@ const UploadForm = () => {
       }
 
       const data = await res.json();
-      setResponse(data);
+      setResponse("Uploaded successfully!");
       setTimeout(() => {
         window.location.href = "/";
-      }, 5000);
+      }, 2000);
     } catch (error) {
       console.error("Error uploading image:", error);
       setResponse("Upload failed!");
