@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CardComponent from "./cardComponent";
 import { Button } from "./button";
+import { restapiImageURL } from "../../../constants";
 
 const ImageGrid = ({ initialPageNo = 1, offset }) => {
   const [cardData, setCardData] = useState([]);
@@ -26,7 +27,7 @@ const ImageGrid = ({ initialPageNo = 1, offset }) => {
     try {
       const tagsQuery = tags.join(",");
       const response = await fetch(
-        `http://localhost:8000/images/retrieve?page=${page}&tags=${tagsQuery}`
+        `${restapiImageURL}/retrieve?page=${page}&tags=${tagsQuery}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch data");
@@ -75,7 +76,7 @@ const ImageGrid = ({ initialPageNo = 1, offset }) => {
           <CardComponent
             key={index}
             unique_id={card.unique_id}
-            image_url={card.image_url}
+            image_url={card.image || card.image_url}
             tags={card.tags}
           />
         ))}
