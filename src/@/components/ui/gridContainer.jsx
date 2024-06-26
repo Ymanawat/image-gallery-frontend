@@ -33,10 +33,10 @@ const ImageGrid = ({ initialPageNo = 1, offset }) => {
         throw new Error("Failed to fetch data");
       }
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setCardData(data.data);
       setNextPageExists(data.pagination.nextPageExists);
-      console.log(nextPageExists);
+      // console.log(nextPageExists);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -56,7 +56,7 @@ const ImageGrid = ({ initialPageNo = 1, offset }) => {
   const handleNext = () => {
     if (nextPageExists) {
       setPageNo(pageNo + 1);
-      console.log(pageNo);
+      // console.log(pageNo);
     }
   };
 
